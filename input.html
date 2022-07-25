@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<body>
+</body>
+<script>
+  // 冒泡
+  function sort(arr) {
+    const i = arr.length
+    for (let x = 0; x < i - 1; x++) {
+      for (let y = 0; y < i - 1 - x; y++) {
+        if (arr[y] > arr[y + 1]) {
+          let temp = arr[y + 1];
+          arr[y + 1] = arr[y];
+          arr[y] = temp;
+        }
+      }
+    }
+    return arr
+  }
+  // 改善冒泡
+  function bubbleSort(arr) {
+    let i = arr.length - 1
+    while (i > 0) {
+      let pos = 0;
+      for (let j = 0; j < i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          let temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+          pos = j
+        }
+      }
+      i = pos;
+    }
+    return arr
+  }
+  //选择排序
+  function selectSort(arr) {
+    let length = arr.length
+    if (!Array.isArray(arr) || length <= 1) return
+    for (let i = 0; i < length - 1; i++) {
+      let minIndex = i;
+      for (let x = i + 1; x < length; x++) {
+        if (arr[minIndex] > arr[x]) {
+          minIndex = x
+        }
+      }
+      var temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
+    }
+    return arr
+  }
+  // 快排
+  function quickSort(arr) {
+    const rec = (arr) => {
+      if (arr.length <= 1) return arr
+      const left = []
+      const right = []
+      const mid = arr[0]; // 基准元素
+      for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < mid) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      }
+      return [...rec(left), mid, ...rec(right)]
+    }
+    return rec(arr)
+  }
+
+  function heapSort(array) {
+
+    let length = array.length;
+
+    // 如果不是数组或者数组长度小于等于1，直接返回，不需要排序 
+    if (!Array.isArray(array) || length <= 1) return;
+
+    buildMaxHeap(array); // 将传入的数组建立为大顶堆
+
+    // 每次循环，将最大的元素与末尾元素交换，然后剩下的元素重新构建为大顶堆
+    for (let i = length - 1; i > 0; i--) {
+      swap(array, 0, i);
+      adjustMaxHeap(array, 0, i); // 将剩下的元素重新构建为大顶堆
+    }
+
+    return array;
+  }
+
+
+  function adjustMaxHeap(array, index, heapSize) {
+    let iMax,
+      iLeft,
+      iRight;
+
+    while (true) {
+      iMax = index; // 保存最大值的索引
+      iLeft = 2 * index + 1; // 获取左子元素的索引
+      iRight = 2 * index + 2; // 获取右子元素的索引
+
+      // 如果左子元素存在，且左子元素大于最大值，则更新最大值索引
+      if (iLeft < heapSize && array[iMax] < array[iLeft]) {
+        iMax = iLeft;
+      }
+
+      // 如果右子元素存在，且右子元素大于最大值，则更新最大值索引
+      if (iRight < heapSize && array[iMax] < array[iRight]) {
+        iMax = iRight;
+      }
+
+      // 如果最大元素被更新了，则交换位置，使父节点大于它的子节点，同时将索引值跟新为被替换的值，继续检查它的子树
+      if (iMax !== index) {
+        swap(array, index, iMax);
+        index = iMax;
+      } else {
+
+        // 如果未被更新，说明该子树满足大顶堆的要求，退出循环
+        break;
+      }
+    }
+  }
+
+  // 构建大顶堆
+  function buildMaxHeap(array) {
+    let length = array.length,
+      iParent = parseInt(length >> 1) - 1; // 获取最后一个非叶子点的元素
+    console.log('iParent', length );
+    for (let i = iParent; i >= 0; i--) {
+      adjustMaxHeap(array, i, length); // 循环调整每一个子树，使其满足大顶堆的要求
+    }
+  }
+
+  // 交换数组中两个元素的位置
+  function swap(array, i, j) {
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  function randArray(len, min, max) {
+    return Array.from({ length: len }, v => Math.floor(Math.random() * (max - min)) + min);
+  }
+
+  function randArray2(len, min, max) {
+    return Array(len).fill(1).map(v => Math.floor(Math.random() * (max - min)) + min);
+  }
+
+  function add(a) {
+    console.log('a',add.i);
+  if (!isFinite(add.i)) {
+    add.i = a
+  } else {
+    add.i += a;
+  }
+  add.valueOf = add.toString = function () {
+    return add.i
+  }
+  return add;
+}
+// alert(add(2)(3)(4))
+// console.log('alert: ', add(2)(3)(4));
+  let arr = randArray(1000000, 0, 100000)
+  // console.log(arr);
+  const startTime = Date.now()
+  const arr1 = heapSort(arr)
+  const endTime = Date.now();
+  console.log(arr1);
+  console.log(endTime - startTime);
+
+  let str = 'we are happy'
+  // str.replace('', '%20')
+  str.replace(/\s/g,"%20")
+  console.log(str);
+</script>
+
+</html>
