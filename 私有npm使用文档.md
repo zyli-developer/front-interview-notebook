@@ -3,7 +3,7 @@
 
   <!-- - `https://npm.xmov.ai/` -->
 
-  <!-- - 可以网页访问，账号密码：xmov/Xmov0115 -->
+   <!-- 可以网页访问，账号密码：xmov/Xmov0115 -->
 
 ## 使用
 
@@ -13,8 +13,8 @@
 
 ```shell
 $ yarn config set registry url
-# https://npm.xmov.ai
 ```
+<!--  https://npm.xmov.ai -->
 
 ### 初始化你的包
 
