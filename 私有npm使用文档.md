@@ -1,9 +1,9 @@
 # 私有 npm 库使用文档
 ## 地址
 
-  - `https://npm.xmov.ai/`
+  <!-- - `https://npm.xmov.ai/` -->
 
-  - 可以网页访问，账号密码：xmov/Xmov0115
+  <!-- - 可以网页访问，账号密码：xmov/Xmov0115 -->
 
 ## 使用
 
@@ -12,7 +12,8 @@
 ### 设置 `registry`
 
 ```shell
-$ yarn config set registry https://npm.xmov.ai
+$ yarn config set registry url
+# https://npm.xmov.ai
 ```
 
 ### 初始化你的包
@@ -33,7 +34,7 @@ $ yarn init
 $ yarn login
 ```
 
-`username` 为上述 `xmov`，`email` 填写自己的企业邮箱
+`username` 为上述 `xxx`，`email` 填写自己的企业邮箱
 
 ### 发布你的包
 
@@ -41,7 +42,7 @@ $ yarn login
 $ yarn publish
 ```
 
-密码为上述 `Xmov0115`，每次发布需要更新 `version` 字段，参考 `npm version major/minor/patch` 命令
+密码为上述 `xxx`，每次发布需要更新 `version` 字段，参考 `npm version major/minor/patch` 命令
 
 ### 删除你的包
 
@@ -61,6 +62,5 @@ $ yarn unpublish ${package-name}@{version} --force
 
 - `nrm` 的作用仅仅是帮助我们快捷的切换源地址，不用完全没有影响，不过你如果有经常切换多个源的需求的话可以用用
 
-- 推送包时需要注意，有些配置可能会影响你推送包，比如 `package.json`` 里的 `private`` 参数。还有些情况推送成功，但是拉取的时候不能正常 install。这时候可以获取 npm 查看原因
+- 推送包时需要注意， 有些配置可能会影响你推送包，比如 `package.json`` 里的 `private`` 参数。还有些情况推送成功，但是拉取的时候不能正常 install。这时候可以获取 npm 查看原因
 
-- 其他问题钉钉联系 `@王凯`

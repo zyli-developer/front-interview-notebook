@@ -86,14 +86,14 @@ plugins: /verdaccio/plugins
 # verdaccio的界面设置
 web:
   enable: true # 可以在页面搜索
-  title: xmov npm # 标题
+  title: npm # 标题
   gravatar: true # 支持 gravatar头像
 # 权限
 auth:
   # 密码验证方式htpasswd，加密后密码保存在文件里
   htpasswd:
     file: /verdaccio/storage/htpasswd
-	# 禁止用户自行注册，只可以用公司xmov账号密码登录验证
+	# 禁止用户自行注册，只可以用公司账号密码登录验证
     max_users: -1
     algorithm: bcrypt
     rounds: 10
@@ -164,7 +164,7 @@ data:
     plugins: /verdaccio/plugins
     web:
       enable: true
-      title: xmov npm
+      title: npm
       gravatar: true
     auth:
       htpasswd:
